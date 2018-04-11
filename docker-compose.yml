@@ -1,7 +1,6 @@
 version: '2'
 networks:
   lb_web:
-    external: true
   back:
     driver: bridge
 services:
@@ -33,7 +32,8 @@ services:
       - VIRTUAL_HOST
     networks:
     - back
-    - lb_web
+    ports:
+      - 40080:80
   cron:
     image: piwik:fpm
     links:
